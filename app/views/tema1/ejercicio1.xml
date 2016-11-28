@@ -1,0 +1,6 @@
+<Alloy>
+    <Window id="win">
+        <!-- Vista posicionada al centro y con fondo rojo -->
+        <View id="view1" class="center red-bg" />
+    </Window>
+</Alloy>

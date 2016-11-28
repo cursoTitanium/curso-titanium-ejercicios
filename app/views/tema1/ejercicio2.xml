@@ -1,0 +1,6 @@
+<Alloy>
+	<Window id="win">
+		<!-- Campo de texto para el nombre -->
+		<TextField class="nombre" />
+	</Window>
+</Alloy>

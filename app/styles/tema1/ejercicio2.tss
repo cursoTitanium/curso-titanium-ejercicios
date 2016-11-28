@@ -1,0 +1,9 @@
+"Window":{
+    title: "Tema 1: Ejercicio 2"
+},
+//Clase nombre con tamaño y color
+".nombre":{
+    width: 200,
+    height: Ti.UI.SIZE,
+    color: "gray"
+}
