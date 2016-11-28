@@ -1,10 +1,50 @@
 <Alloy>
-	<Window id="win" class="gray-bg">
+	<Window id="win" class="black-bg">
 		<!-- Imagen -->
+		<View class="profileImageContainer">
+			<ImageView class="profileImage" />
+		</View>
 		<!-- Nombre -->
+		<Label class="title white-ft" />
+		<!-- Separador -->
+		<View class="separator-16" />
 		<!-- Puesto en UPV -->
+		<Label class="subtitle gray-ft" />
+		<!-- Separador -->
+		<View class="separator-16" />		
 		<!-- Bloque horizontal FOLLOWERS -->
+		<View class="followersContainer">
+			<Label class="numberFollowers gray-light-ft" />
+			<Label class="followers gray-ft" />
+			<Label class="point gray-light-ft" />
+			<Label class="numberFollowing gray-light-ft" />
+			<Label class="following gray-ft" />
+		</View>
 		<!-- Botón FOLLOW -->
+		<View class="followButtonContainer">
+			<View class="addContainer green-bg">
+				<Label class="add white-ft" />
+			</View>
+			<View class="followContainer">
+				<Label class="follow gray-dark-ft" />
+			</View>
+		</View>
+		<!-- Separador -->
+		<View class="separator-24" />
 		<!-- Bloque horizontal POSTS / LIKES -->
+		<View class="activityContainer">
+			<View class="postsContainer white-bg">
+				<View class="horizontal-centered">
+					<Label class="numberPosts gray-dark-ft" />
+					<Label class="posts gray-ft" />				
+				</View>
+			</View>
+			<View class="likesContainer gray-light-bg">
+				<View class="horizontal-centered">
+					<Label class="numberLikes gray-dark-ft" />
+					<Label class="likes gray-ft" />
+				</View>
+			</View>			
+		</View>
 	</Window>
 </Alloy>

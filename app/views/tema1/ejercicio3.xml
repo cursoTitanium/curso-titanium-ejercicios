@@ -1,8 +1,23 @@
 <Alloy>
 	<Window id="win">
-		<!-- Etiqueta Nombre asociada al campo -->
-		<Label class="nombre" />
-		<!-- Campo de texto nombre -->
-		<TextField id="nombre" />
+		<View class="container center">
+			<!-- Campo de texto para el nombre -->
+			<Label class="nombreLabel" />
+			<TextField class="nombre" />
+			<!-- Campo de texto para el apellidos -->
+			<Label class="apellidosLabel" />
+			<TextField class="apellidos" />
+			<!-- Campo de texto para el email -->
+			<Label class="emailLabel" />
+			<TextField class="email" />
+			<!-- Campo de texto para el telefono -->
+			<Label class="telefonoLabel" />
+			<TextField class="telefono" />
+			<!-- Area de texto para la descripcion -->
+			<Label class="mensajeLabel" />
+			<TextArea class="mensaje" />				
+			<!-- Boton de envío -->
+			<Button class="margin-right enviar" />			
+		</View>
 	</Window>
 </Alloy>

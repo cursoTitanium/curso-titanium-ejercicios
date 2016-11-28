@@ -1,6 +1,18 @@
 <Alloy>
 	<Window id="win">
-		<!-- Campo de texto para el nombre -->
-		<TextField class="nombre" />
+		<View class="container center">
+			<!-- Campo de texto para el nombre -->
+			<TextField class="margin nombre" />
+			<!-- Campo de texto para el apellidos -->
+			<TextField class="margin apellidos" />
+			<!-- Campo de texto para el email -->
+			<TextField class="margin email" />			
+			<!-- Campo de texto para el telefono -->
+			<TextField class="margin telefono" />
+			<!-- Area de texto para el mensaje -->
+			<TextArea class="margin mensaje" />				
+			<!-- Boton de envío -->
+			<Button class="margin-right enviar" />			
+		</View>
 	</Window>
 </Alloy>

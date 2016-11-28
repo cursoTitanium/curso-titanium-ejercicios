@@ -8,12 +8,77 @@
         y: "50%"
     }
 },
-//Clase fondo rojo
+//Clases fondos
 ".red-bg":{
     backgroundColor: "red"
+},
+".brown-bg":{
+    backgroundColor: "brown"
+},
+".yellow-bg":{
+    backgroundColor: "yellow"
+},
+".blue-bg":{
+    backgroundColor: "blue"
+},
+".green-bg":{
+    backgroundColor: "green"
+},
+".black-bg":{
+    backgroundColor: "black"
+},
+".orange-bg":{
+    backgroundColor: "orange"
 },
 //ID view1 con su tamaño
 "#view1":{
     width: 50,
     height: 50
+},
+//ID view2 con su tamaño
+"#view2":{
+    width: Ti.UI.FILL,
+    height: "40mm",
+    top: "25dp",
+    left: "10%",
+    right: "10%"
+},
+//ID view3 con su tamaño
+"#view3":{
+    width: "50px",
+    height: "50px", 
+    center:{
+        x: "50%",
+        y: "25%"
+    }
+},
+//ID view4 con su tamaño
+"#view4":{
+    width: "90%",
+    height: "48dp",
+    bottom: 0
+},
+//ID view5 con su tamaño
+"#view5":{
+    width: "5%",
+    top:25,
+    left: "5cm",
+    bottom: 25
+},
+//ID view6 con su tamaño
+"#view6":{
+    width: 25,
+    height: 25,
+    right: 25,
+    bottom: 25
+},
+
+//ID view6 con su tamaño
+//Como es una vista a la que le hemos dicho que su altura
+//es asignada por su contenido y esta vista no tiene contenido
+//su altura será 0.
+"#view7":{
+    width: "40dp",
+    height: Ti.UI.SIZE,
+    left: "5px"
 }
