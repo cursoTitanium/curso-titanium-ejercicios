@@ -1,4 +1,9 @@
-
-".container" : {
-  
-}
+"Window":{
+	title: "Tema 1: Ejercicio 6"
+},
+"ActionBar":{
+	//Mostramos el botón de home como una flecha
+	displayHomeAsUp: true,
+	onHomeIconItemSelected: "close"
+},
+//A partir de aquí debemos crear los estilos de nuestro action bar

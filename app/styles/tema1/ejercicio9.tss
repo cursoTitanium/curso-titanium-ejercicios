@@ -1,4 +1,11 @@
-
-".container" : {
-  
+"Window":{
+	title: "Tema 1: Ejercicio 9",
+	layout: "vertical"
+},
+".borde":{
+	borderColor: "red"
+},
+".container":{
+	width: "50%",
+	height: "50%"
 }

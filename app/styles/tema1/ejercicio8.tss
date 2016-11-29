@@ -1,4 +1,10 @@
-
-".container" : {
-  
+"Window":{
+	title: "Tema 1: Ejercicio 8"
+},
+".gris":{
+	backgroundColor: "#E6E6E6"
+},
+".pagina":{
+	width: "90%",
+	height: "90%"
 }

@@ -1,4 +1,7 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="win">
+		<ActionBar />
+		<!-- Aquí hay que empezar a declarar el Menu y los MenuItem -->
+		
+	</Window>
 </Alloy>

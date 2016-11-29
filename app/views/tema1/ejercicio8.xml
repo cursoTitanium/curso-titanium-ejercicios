@@ -1,4 +1,8 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="win">
+		<!-- Esto podría ser un ejemplo de página -->
+		<View class="pagina gris">
+			
+		</View>
+	</Window>
 </Alloy>
