@@ -2,7 +2,20 @@
 	<Window id="win">
 		<!-- Vista contenedora del menú -->
 		<View class="menu bottom">
-
+			<!-- Creamos contenedores para cada item -->
+			<View class="menuItem">
+				<!-- Creamos etiqueta para cada item -->
+				<Label class="inicio" />
+			</View>
+			<View class="menuItem">
+				<Label class="fotos" />
+			</View>
+			<View class="menuItem">
+				<Label class="mensajes" />
+			</View>
+			<View class="menuItem">
+				<Label class="perfil" />
+			</View>									
 		</View>
 	</Window>
 </Alloy>
