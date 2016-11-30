@@ -25,4 +25,34 @@
 	hintText: "Búsqueda",
 	color: "black",
 	iconified: false
+},
+".parte1":{
+	image: "/images/fruta.jpg",
+	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+},
+".width-25":{
+	width: "25%"
+},
+".width-50":{
+	width: "50%"
+},
+".height-fill":{
+	height: Titanium.UI.FILL
+},
+"#nombre":{
+	font:{
+		fontSize: 24,
+		fontWeight: "bold"
+	},
+	color: "black"
+},
+"#boton":{
+	image: "/images/boton.png",
+	right: 16
+},
+".template":{
+	width: Ti.UI.FILL,
+	height: 48,
+	layout: "horizontal",
+	horizontalWrap: false
 }

@@ -3,9 +3,35 @@
 		<ListView>
 			<SearchView id="searchBar" ns="Ti.UI.Android" platform="android"/>
 			<!-- Declaración de plantillas <Templates> -->
-			<!-- Declaración de plantillas <ItemTemplate> -->
+			<Templates>
+				<!-- Declaración de plantillas <ItemTemplate> -->
+				<ItemTemplate class="template" name="parte2">
+					<View class="width-25 height-fill">
+						<ImageView bindId="img" id="img" />
+					</View>
+					<View class="width-50 height-fill">
+						<Label bindId="nombre" id="nombre" />
+					</View>
+					<View class="width-25 height-fill">
+						<ImageView id="boton" />
+					</View>
+				</ItemTemplate>
+			</Templates>
 			<!-- Declaración de secciones <ListSection> -->
-			<!-- Declaración de items <ListItem> -->
+			<ListSection>
+				<!-- Declaración de items <ListItem> básicos -->
+				<ListItem title="Plátano" class="parte1" searchableText="Plátano" />
+				<ListItem title="Naranja" class="parte1" searchableText="Naranja" />
+				<ListItem title="Piña" class="parte1" searchableText="Piña" />
+				<ListItem title="Sandía" class="parte1" searchableText="Sandía" />
+			</ListSection>
+			<ListSection>
+				<!-- Declaración de items <ListItem> template -->
+				<ListItem template="parte2" nombre:text="Plátano" img:image="/images/banana.png" searchableText="Plátano" />
+				<ListItem template="parte2" nombre:text="Naranja" nombre:color="orange" img:image="/images/fruits.png" searchableText="Naranja" />
+				<ListItem template="parte2" nombre:text="Piña" nombre:color="blue" img:image="/images/pineapple.png" searchableText="Piña" />
+				<ListItem template="parte2" nombre:text="Sandía" img:image="/images/fruits.png" searchableText="Sandía" />
+			</ListSection>
 		</ListView>
 	</Window>
 </Alloy>

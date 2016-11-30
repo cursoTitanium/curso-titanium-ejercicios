@@ -1,8 +1,26 @@
 <Alloy>
 	<Window id="win">
-		<!-- Esto podría ser un ejemplo de página -->
-		<View class="pagina gris">
-			
-		</View>
+		<ScrollableView class="container">
+			<!-- Esto podría ser un ejemplo de página -->
+			<View class="gris">
+				<!-- Una vista contenedor vacía alinea en el centro a sus hijos -->
+				<View class="contenido">
+					<ImageView id="imagen1" />
+					<Label id="pie1" />
+				</View>
+			</View>
+			<View class="azul">
+				<View class="contenido">
+					<ImageView id="imagen2" />
+					<Label id="pie2" />
+				</View>
+			</View>
+			<View class="marron">
+				<View class="contenido">
+					<ImageView id="imagen3" />
+					<Label id="pie3" />
+				</View>
+			</View>
+		</ScrollableView>
 	</Window>
 </Alloy>

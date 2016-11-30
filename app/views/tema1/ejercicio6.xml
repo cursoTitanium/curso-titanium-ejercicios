@@ -2,6 +2,15 @@
 	<Window id="win">
 		<ActionBar />
 		<!-- Aquí hay que empezar a declarar el Menu y los MenuItem -->
-		
+		<Menu>
+			<MenuItem id="refrescar" />
+			<MenuItem id="ajustes" />
+			<MenuItem id="buscar">
+				<ActionView>
+					<SearchView id="searchBar" ns="Ti.UI.Android" />
+				</ActionView>
+			</MenuItem>
+			<MenuItem id="mas" />
+		</Menu>
 	</Window>
 </Alloy>

@@ -1,5 +1,5 @@
 <Alloy>
 	<Window id="win">
-		<View class="container borde" />
+		<WebView class="container" />
 	</Window>
 </Alloy>

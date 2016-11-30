@@ -7,3 +7,24 @@
 	onHomeIconItemSelected: "close"
 },
 //A partir de aquí debemos crear los estilos de nuestro action bar
+"#refrescar":{
+	title: "Refrescar",
+	icon: "/images/ic_refresh_white_24dp.png",
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS
+},
+"#ajustes":{
+	title: "Ajustes",
+	icon: "/images/ic_settings_white_24dp.png",
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_IF_ROOM	
+},
+"#buscar":{
+	title: "Buscar",
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+},
+"#searchBar":{
+	hintText: "Buscar algo..."
+},
+"#mas":{
+	title: "Más...",
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_NEVER
+}
