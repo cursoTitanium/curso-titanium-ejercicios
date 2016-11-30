@@ -1,6 +1,10 @@
 "Window":{
 	title: "Tema 1: Ejercicio 7"
 },
+//Añadimos el elemento ScrollView y asignamos propiedades
+"ScrollView":{
+	scrollType: "horizontal"
+},
 ".container":{
 	layout: "horizontal",
 	horizontalWrap: false

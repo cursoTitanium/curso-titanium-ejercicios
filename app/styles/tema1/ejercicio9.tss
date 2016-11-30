@@ -1,11 +1,13 @@
 "Window":{
-	title: "Tema 1: Ejercicio 9",
-	layout: "vertical"
+	title: "Tema 1: Ejercicio 9"
 },
+"WebView":{
+	url: "http://www.upv.es"
+}
 ".borde":{
 	borderColor: "red"
 },
 ".container":{
-	width: "50%",
-	height: "50%"
-}
+	width: "90%",
+	height: "90%"
+},
