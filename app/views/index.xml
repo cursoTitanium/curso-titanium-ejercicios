@@ -3,6 +3,7 @@
 		<ListView id="listview">
 			<ListSection id="listsection">
 				<ListItem itemId="tema1" title="Tema 1: Interfaz de usuario" />
+				<ListItem itemId="tema2" title="Tema 2: Alloy MVC Framework" />
 			</ListSection>
 		</ListView>
 	</Window>
