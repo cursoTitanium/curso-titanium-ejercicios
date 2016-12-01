@@ -7,7 +7,7 @@
         fontSize: 18,
         fontWeight: "bold"
     },
-    color: "white"
+    color: Alloy.CFG.blanco
 },
 //Contenedor principal de vistas
 "#container":{

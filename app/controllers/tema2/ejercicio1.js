@@ -1,15 +1,20 @@
 (function constructor(args) {
 	"use strict";
 
+	var CAMPOS_REQUERIDOS = ["nombre", "email", "mensaje"],
+	CAMPOS = ["nombre", "apellidos", "email", "telefono", "mensaje"];
+
 	/**
 	 * setEventos
 	 * @description Añadimos eventos a los elementos de UI
 	 */
-	function setEventos() {
+	(function setEventos() {
 		//Añadimos evento al botón enviar y asignamos callback
-		
+		$.addListener($.enviar, "click", validarCamposRequeridos);
+
 		//Añadimos evento al botón reset y asignamos callback
-	}
+		$.addListener($.reset, "click", resetFormulario);
+	})();
 
 	/**
 	 * validarCamposRequeridos
@@ -19,9 +24,51 @@
 	function validarCamposRequeridos(e) {
 		//Implementar función de validación de campos requeridos
 		//Nombre, email y mensaje
-		
-		//Si validación correcta mensaje de alerta "Mensaje enviado."
-		//Si error, marcar campos erróneos
+		var camposErroneos = hayCamposErroneos();
+
+		resetCamposErroneos();
+
+		//Hay campos erroneos
+		if (camposErroneos.length) {
+			//Marcamos campos erróneos
+			camposErroneos.forEach(function(campo) {
+				$[campo].setBorderColor(Alloy.CFG.rojo);
+			});
+		} else {
+			//Validación correcta mensaje de alerta "Mensaje enviado."
+			Alloy.Globals.dialog("Atención", "Mensaje enviado");
+		}
+	}
+
+	/**
+	 * hayCamposErroneos
+	 * @description Comprueba que existan campos erróneos
+	 * @return {Object} camposErroneos
+	 */
+	function hayCamposErroneos() {
+		var camposRequeridos = CAMPOS_REQUERIDOS,
+		    camposErroneos = [];
+
+		resetCamposErroneos();
+
+		camposRequeridos.forEach(function(campo) {
+			//Si el campo de texto no contiene texto es erróneo
+			if (!$[campo].value.length) {
+				camposErroneos.push(campo);
+			}
+		});
+
+		return camposErroneos;
+	}
+
+	/**
+	 * resetCamposErroneos
+	 * @description Resetea el borde de los campos
+	 */
+	function resetCamposErroneos() {
+		["nombre", "email", "mensaje"].forEach(function(campo) {
+			$[campo].setBorderColor(Alloy.CFG.gris);
+		});
 	}
 
 	/**
@@ -30,8 +77,12 @@
 	 * @param {Object} e
 	 */
 	function resetFormulario(e) {
-		//Implementar función de validación de campos requeridos
-		//Nombre, email y mensaje
+
+		var campos = CAMPOS;
+		
+		campos.forEach(function(campo){
+			$[campo].setValue("");
+		});
 	}
 
 })($.args || {});

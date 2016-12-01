@@ -1,4 +1,26 @@
-
-".container" : {
-  
+"Window":{
+	title: "Tema 2: Ejercicio 3"
+},
+".container":{
+	width: "75%",
+	height: Ti.UI.SIZE,
+	layout: "vertical"
+},
+"#foto":{
+	borderRadius: 5,
+	defaultImage: "/images/profile.png"
+},
+"#nombre":{
+	text: "Nombre de la persona",
+	color: Alloy.CFG.azul,
+	font:{
+		fontSize: 24,
+		fontWeight: "bold"
+	},
+	bottom: 24
+},
+"#generar":{
+	title: "GENERAR",
+	color: Alloy.CFG.blanco,
+	backgroundColor: Alloy.CFG.verde 
 }

@@ -1,7 +1,12 @@
 <Alloy>
 	<Window id="win">
-		<!-- Añadir ImageView -->
-		<!-- Añadir Label -->
-		<!-- Añadir botón generar -->
+		<View class="container">
+			<!-- Añadir ImageView -->
+			<ImageView id="foto" />
+			<!-- Añadir Label -->
+			<Label id="nombre" />
+			<!-- Añadir botón generar -->
+			<Button id="generar" />
+		</View>
 	</Window>
 </Alloy>
