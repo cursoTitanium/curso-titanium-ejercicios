@@ -23,4 +23,60 @@
 		fontSize: 16
 	},
 	color: "black"
-}
+},
+//Clases fondos
+".red-bg":{
+    backgroundColor: Alloy.CFG.rojo
+},
+".purple-bg":{
+    backgroundColor: Alloy.CFG.morado
+},
+".yellow-bg":{
+    backgroundColor: Alloy.CFG.amarillo
+},
+".blue-bg":{
+    backgroundColor: Alloy.CFG.azul
+},
+".green-bg":{
+    backgroundColor: Alloy.CFG.verde
+},
+".black-bg":{
+    backgroundColor: Alloy.CFG.negro
+},
+".orange-bg":{
+    backgroundColor: Alloy.CFG.naranja
+},
+".gray-bg":{
+    backgroundColor: Alloy.CFG.gris
+},
+".white-bg":{
+    backgroundColor: Alloy.CFG.blanco
+},
+//Clases colores fuente
+".red-ft":{
+    color: Alloy.CFG.rojo
+},
+".purple-ft":{
+    color: Alloy.CFG.morado
+},
+".yellow-ft":{
+    color: Alloy.CFG.amarillo
+},
+".blue-ft":{
+    color: Alloy.CFG.azul
+},
+".green-ft":{
+    color: Alloy.CFG.verde
+},
+".black-ft":{
+    color: Alloy.CFG.negro
+},
+".orange-ft":{
+    color: Alloy.CFG.naranja
+},
+".gray-ft":{
+    color: Alloy.CFG.gris
+},
+".white-ft":{
+    color: Alloy.CFG.blanco
+},

@@ -10,6 +10,21 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+/**
+ * Dialog
+ * @description Mostramos un diálogo de alerta
+ * @param {Object} titulo
+ * @param {Object} mensaje
+ */
+Alloy.Globals.dialog = function(titulo, mensaje){
+	Ti.UI.createAlertDialog({
+		title: titulo || "Atención",
+		message: mensaje || "Mensaje por defecto",
+		ok: "OK" 
+	}).show();
+};
+
+//Lista de perfiles de usuario
 Alloy.Globals.userList = [{
 	"gender" : "male",
 	"name" : {

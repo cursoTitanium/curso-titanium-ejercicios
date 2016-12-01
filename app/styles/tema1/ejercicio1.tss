@@ -8,28 +8,6 @@
         y: "50%"
     }
 },
-//Clases fondos
-".red-bg":{
-    backgroundColor: "red"
-},
-".brown-bg":{
-    backgroundColor: "brown"
-},
-".yellow-bg":{
-    backgroundColor: "yellow"
-},
-".blue-bg":{
-    backgroundColor: "blue"
-},
-".green-bg":{
-    backgroundColor: "green"
-},
-".black-bg":{
-    backgroundColor: "black"
-},
-".orange-bg":{
-    backgroundColor: "orange"
-},
 //ID view1 con su tamaño
 "#view1":{
     width: 50,
