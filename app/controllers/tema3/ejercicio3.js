@@ -7,10 +7,6 @@
 	var items = [],
 	url = "https://randomuser.me/api/?format=json&results=50";
 
-	//Preparamos la lista de ListItems
-
-	//Rellenar la lista con los elementos de la userList
-
 	/**
 	 * setEventos
 	 * @description Añadimos eventos a los elementos de UI
@@ -21,33 +17,58 @@
 		$.addListener($.list, "itemclick", clickEnLista);
 	})();
 
+	/**
+	 * onOpen
+	 * @description Callback evento open
+	 * @param {Object} e
+	 */
 	function onOpen(e){
 		showLoader();
-		setTimeout(getUserList, 5000);
-		//getUserList();
+		setTimeout(getUserList, 3000);
 	}
 
+	/**
+	 * showLoader
+	 * @description Muestra un loader
+	 */
 	function showLoader(){
 		$.activityIndicator.show();
 		$.loader.setHeight(Ti.UI.FILL);
 	}
 
+	/**
+	 * hideLoader
+	 * @description Oculta loader
+	 */
 	function hideLoader(){
 		$.activityIndicator.hide();
 		$.loader.setHeight(0);		
 	}
 
+	/**
+	 * getUserList
+	 * @description GET a lista de usuarios
+	 */
 	function getUserList(){
+		//Creamos httpClient
 		var httpClient = Ti.Network.createHTTPClient({
 			timeout: 5000,
 			onload: success,
 			onerror: error
 		});
 		
+		//Abrimos conexión
 		httpClient.open("GET", url);
+		
+		//Solicitamos datos
 		httpClient.send();
 	}
 
+	/**
+	 * success
+	 * @description Callback exito httpClient
+	 * @param {Object} e
+	 */
 	function success(e){
 		
 		var userList = JSON.parse(this.getResponseText()).results;
@@ -56,8 +77,13 @@
 		setTimeout(hideLoader, 5000);
 	}
 
+	/**
+	 * success
+	 * @description Callback error httpClient
+	 * @param {Object} e
+	 */
 	function error(e){
-		
+		alert(JSON.stringify(e.error));
 	}
 
 	/**

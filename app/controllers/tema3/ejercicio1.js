@@ -25,14 +25,18 @@
 	})();
 
 	function prepararAjustes() {
+		//Obtenemos la contraseña de Properties y si no está el valor por defecto es Introducir contraseña
 		var password = Ti.App.Properties.getString("password", "Introducir contraseña");
 
+		//Si el contenido es el valor por defecto
 		if (password == "Introducir contraseña") {
 			$.password.setText(password);
 		} else {
+			//En otro caso reemplazamos el password por asteriscos
 			$.password.setText(password.replace(/./g, "*"));
 		}
 
+		//Establecemos el nombre de usuario y el estado de las notificaciones
 		$.username.setText(Ti.App.Properties.getString("username", "Introducir usuario"));
 		$.notifications.setValue(Ti.App.Properties.getBool("notifications", false));
 	}
