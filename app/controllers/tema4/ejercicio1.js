@@ -23,6 +23,7 @@
 	(function setEventos() {
 		//Establecer callback para el evento open la ventana $.win
 		$.addListener($.win, "open", cargarDatos);
+		$.addListener($.win, "close", limpiarControlador);
 
 		//Establecer callback para el evento itemclick de la lista $.list
 		$.addListener($.list, "itemclick", editarItem);
@@ -82,7 +83,7 @@
 	 * @param {Object} registro Objeto resultSet
 	 */
 	function prepararItem(registro) {
-		
+
 		var pelicula = {
 			id : registro.fieldByName("id"),
 			titulo : registro.fieldByName("titulo"),
@@ -210,16 +211,16 @@
 
 		//Solo actualizamos si todos los campos tienen valores
 		if (esFormularioValido()) {
-			
+
 			//Obtenemos datos del formulario
 			titulo = $.titulo.getValue();
 			genero = $.genero.getValue();
 			año = $.año.getValue();
 			sinopsis = $.sinopsis.getValue();
-						
+
 			//Preparamos query
 			query = "UPDATE PELICULAS SET TITULO=?, GENERO=?, AÑO=?, SINOPSIS=? WHERE ID=?;";
-			
+
 			//Actualizamos la base de datos
 			db.execute(query, titulo, genero, año, sinopsis, idEnEdicion);
 		}
@@ -231,17 +232,17 @@
 	 */
 	function borrarPelicula() {
 		var query;
-		
+
 		if (modoEditor == MODO_EDICION) {
 			//Preparamos query con idEnEdicion
 			query = "DELETE FROM PELICULAS WHERE ID=?;";
-			
+
 			//Eliminamos registro
 			db.execute(query, idEnEdicion);
-			
+
 			//Actualizamos la lista
 			actualizarLista();
-			
+
 			cerrarEditor();
 		}
 	}
@@ -277,4 +278,13 @@
 		});
 	}
 
-})($.args || {});
+	/**
+	 * limpiarControlador
+	 * @description Cerramos base de datos
+	 * @param {Object} e
+	 */
+	function limpiarControlador(e) {
+		db.close();
+	}
+
+})($.args || {}); 
