@@ -12,8 +12,7 @@
 	 * @description Añadimos eventos a los elementos de UI
 	 */
 	(function setEventos() {
-		//Añadimos listener a open de ventana
-
+		$.addListener($.win, "open", onOpen);
 		//Añadimos evento click a la lista y su callback
 		$.addListener($.list, "itemclick", clickEnLista);
 	})();
@@ -24,8 +23,8 @@
 	 * @param {Object} e
 	 */
 	function onOpen(e){
-		//Mostramos loader
-		//Hacemos peticion
+		showLoader();
+		setTimeout(getUserList, 3000);
 	}
 
 	/**
@@ -52,10 +51,39 @@
 	 */
 	function getUserList(){
 		//Creamos httpClient
+		var httpClient = Ti.Network.createHTTPClient({
+			timeout: 5000,
+			onload: success,
+			onerror: error
+		});
 		
 		//Abrimos conexión
+		httpClient.open("GET", url);
 		
 		//Solicitamos datos
+		httpClient.send();
+	}
+
+	/**
+	 * success
+	 * @description Callback exito httpClient
+	 * @param {Object} e
+	 */
+	function success(e){
+		
+		var userList = JSON.parse(this.getResponseText()).results;
+		
+		$.section.setItems(userList.map(prepararItems));
+		setTimeout(hideLoader, 5000);
+	}
+
+	/**
+	 * success
+	 * @description Callback error httpClient
+	 * @param {Object} e
+	 */
+	function error(e){
+		alert(JSON.stringify(e.error));
 	}
 
 	/**
@@ -98,15 +126,5 @@
 			template : "user_template"
 		};
 	}
-
-	//ESTA PARTE HAY QUE BORRARLA Y ADAPTARLA AL NUEVO FUNCIONAMIENTO REQUERIDO
-
-	//Lista de usuarios disponible en Alloy.Globals.userList;
-
-	//Preparamos la lista de ListItems
-	items = Alloy.Globals.userList.map(prepararItems);
-
-	//Rellenar la lista con los elementos de la userList
-	$.section.setItems(items);
 
 })($.args || {}); 

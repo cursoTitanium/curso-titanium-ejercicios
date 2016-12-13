@@ -13,20 +13,32 @@
 	 */
 	(function setEventos() {
 		//Establecemos listeners a las filas
+		$.addListener($.usernameRow, "click", onClickUsernameRow);
+		$.addListener($.passwordRow, "click", onClickPasswordRow);
 
 		//Establecemos listeners a los AlertDialogs
+		$.addListener($.editUsername, "click", onEditUsername);
+		$.addListener($.editPassword, "click", onEditPassword);
 
 		//Establecemos listener al elemento Switch
-
+		$.addListener($.notifications, "change", onChangeNotifications);
 	})();
 
 	function prepararAjustes() {
 		//Obtenemos la contraseña de Properties y si no está el valor por defecto es Introducir contraseña
+		var password = Ti.App.Properties.getString("password", "Introducir contraseña");
 
 		//Si el contenido es el valor por defecto
-		//En otro caso reemplazamos el password por asteriscos : replace(/./g, "*")
+		if (password == "Introducir contraseña") {
+			$.password.setText(password);
+		} else {
+			//En otro caso reemplazamos el password por asteriscos
+			$.password.setText(password.replace(/./g, "*"));
+		}
 
 		//Establecemos el nombre de usuario y el estado de las notificaciones
+		$.username.setText(Ti.App.Properties.getString("username", "Introducir usuario"));
+		$.notifications.setValue(Ti.App.Properties.getBool("notifications", false));
 	}
 
 	/**
@@ -58,10 +70,22 @@
 	 */
 	function onEditUsername(e) {
 		//Si pulsamos en Aceptar
-		//Recogemos el valor del TextField con ID usernameField
-		//Lo almacemamos en properties
-		//Actualizamos la etiqueta de la fila Usuario
-		//Establecemos el valor del TextField a cadena vacía
+		var username;
+
+		if (e.index == 0) {
+			//Recogemos el valor del TextField con ID usernameField
+			//Lo almacemamos en properties
+			//Actualizamos la etiqueta de la fila Usuario
+			//Establecemos el valor del TextField a cadena vacía
+			
+			username = $.usernameField.getValue();
+			
+			if (username.length) {
+				$.username.setText(username);
+				$.usernameField.setValue("");
+				Ti.App.Properties.setString("username", username);
+			}
+		}
 	}
 
 	/**
@@ -70,11 +94,23 @@
 	 * @param {Object} e
 	 */
 	function onEditPassword(e) {
+		var password;
+		
 		//Si pulsamos en Aceptar
-		//Recogemos el valor del TextField con ID passwordField
-		//Lo almacemamos en properties
-		//Actualizamos la etiqueta de la fila password transformándola en asteriscos
-		//Establecemos el valor del TextField a cadena vacía
+		if (e.index == 0) {
+			//Recogemos el valor del TextField con ID passwordField
+			//Lo almacemamos en properties
+			//Actualizamos la etiqueta de la fila password transformándola en asteriscos
+			//Establecemos el valor del TextField a cadena vacía
+			
+			password = $.passwordField.getValue();
+			
+			if (password.length) {
+				$.password.setText(password.replace(/./g, "*"));
+				$.passwordField.setValue("");
+				Ti.App.Properties.setString("password", password);
+			}
+		}
 	}
 
 	/**
@@ -85,6 +121,7 @@
 	function onChangeNotifications(e) {
 		//Recogemos el valor del Switch con ID notifications
 		//Lo almacenamos en properties
+		Ti.App.Properties.setBool("notifications", e.value);
 	}
 
-})($.args || {}); 
+})($.args || {});
