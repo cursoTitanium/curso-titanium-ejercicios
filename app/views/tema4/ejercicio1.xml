@@ -1,0 +1,15 @@
+<Alloy>
+	<Window id="win">
+		<View class="menu menuSuperior">
+			<Label id="actualizarLista" class="menuItem" />
+		</View>
+		<ListView>
+			<ListSection>
+				<ListItem title="Base de datos no cargada." />
+			</ListSection>
+		</ListView>
+		<View class="menu menuInferior">
+			<Label id="cargarDatos" class="menuItem" />
+		</View>		
+	</Window>
+</Alloy>

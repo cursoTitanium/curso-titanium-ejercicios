@@ -1,0 +1,40 @@
+"Window":{
+	title: "Tema 4: Ejercicio 1"
+},
+"ListView":{
+	top: 48,
+	bottom: 48,
+	backgroundColor: Alloy.CFG.blanco
+},
+"ListItem":{
+	color: "black",
+	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+},
+".menu":{
+	width: Titanium.UI.FILL,
+	height: 48
+}
+".menuSuperior":{
+	top: 0,
+	backgroundColor: Alloy.CFG.azul
+},
+".menuInferior":{
+	bottom: 0,
+	backgroundColor: Alloy.CFG.verde
+},
+".menuItem":{
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontSize: 18,
+		fontWeight: "bold"
+	},
+	color: Alloy.CFG.blanco
+},
+"#actualizarLista":{
+	text: "ACTUALIZAR LISTA"
+},
+"#cargarDatos":{
+	text: "CARGAR / ABRIR BASE DE DATOS"
+}
