@@ -12,20 +12,22 @@
 	modoEditor = null;
 	idEnEdicion = null;
 
-	//Al iniciar el controlador debemos instalar la base de datos
+/*
+	- Al iniciar el controlador debemos instalar la base de datos
 
-	//Cuando la ventana se abra debemos mostrar los datos de las peliculas en la lista
+	- Cuando la ventana se abra debemos obtener los registros de la DB
+	  y mostrarlos las peliculas en la lista
 
-	//Cuando se haga click en un registro llamar a abrirDetalle
+	- Cuando se haga click en un registro llamar a editarItem
 
-	//Entonces se abrirá un diálogo sobre el que tendremos que volcar los datos
-	//de la película y podremos operar de la siguiente forma:
+	- Entonces se abrirá un diálogo sobre el que tendremos que volcar los
+	  datos de la película y podremos operar de la siguiente forma:
 
-	//Borrar registro: Eliminaremos de la base de datos la película
-	//Guardar registro: Guardaremos los cambios hechos en el registro
-
-	//Tambien debemos implementar la inserción de un nuevo registro implementando
-	//la funcionalidad en añadirPelicula
+			Insertar registro: nuevaPelicula - Insertaremos un nuevo registro en la base de datos
+			Editar registro: editarItem - Editaremos un registro existente
+			Borrar registro: borrarPelicula -Eliminaremos de la base de datos la película
+			Guardar registro: guardarPelicula - Guardaremos los cambios hechos en el registro
+*/
 
 	/**
 	 * setEventos
