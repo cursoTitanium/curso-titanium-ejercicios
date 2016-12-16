@@ -3,6 +3,7 @@
 
 	var modoEditor,
 	    idEnEdicion,
+	    db,
 	    MODO_NUEVO,
 	    MODO_EDICION;
 
@@ -12,22 +13,8 @@
 	modoEditor = null;
 	idEnEdicion = null;
 
-/*
-	- Al iniciar el controlador debemos instalar la base de datos
-
-	- Cuando la ventana se abra debemos obtener los registros de la DB
-	  y mostrarlos las peliculas en la lista
-
-	- Cuando se haga click en un registro llamar a editarItem
-
-	- Entonces se abrirá un diálogo sobre el que tendremos que volcar los
-	  datos de la película y podremos operar de la siguiente forma:
-
-			Insertar registro: nuevaPelicula - Insertaremos un nuevo registro en la base de datos
-			Editar registro: editarItem - Editaremos un registro existente
-			Borrar registro: borrarPelicula -Eliminaremos de la base de datos la película
-			Guardar registro: guardarPelicula - Guardaremos los cambios hechos en el registro
-*/
+	//Al iniciar el controlador debemos instalar la base de datos
+	db = Ti.Database.install("/db/peliculas", "peliculas");
 
 	/**
 	 * setEventos
@@ -36,6 +23,7 @@
 	(function setEventos() {
 		//Establecer callback para el evento open la ventana $.win
 		$.addListener($.win, "open", cargarDatos);
+		$.addListener($.win, "close", limpiarControlador);
 
 		//Establecer callback para el evento itemclick de la lista $.list
 		$.addListener($.list, "itemclick", editarItem);
@@ -59,6 +47,7 @@
 
 		//Obtener todos los datos de la base de datos
 		//Preparamos query, ejecutamos y obtenemos un ResultSet
+		resultSet = db.execute("SELECT * FROM PELICULAS");
 
 		//Llamar a mostrarDatos pasándole como parámetro un ResultSet
 		mostrarDatos(resultSet);
@@ -70,15 +59,19 @@
 	 * @param {Object} resultSet Conjunto de registros
 	 */
 	function mostrarDatos(resultSet) {
-		var items,
-		    resultSet;
+		var items;
 
 		items = [];
-		resultSet = null;
 
 		//Iterar sobre los registros: while(resultSet.isValidRow())
 		//Añadimos cada registro como item: items.push(prepararItem(registro))
-		items.push(prepararItem(resultSet));
+		while (resultSet.isValidRow()) {
+			items.push(prepararItem(resultSet));
+			resultSet.next();
+		}
+
+		//Cerramos resultSet
+		resultSet.close();
 
 		//Mostramos elementos en la lista
 		$.section.setItems(items);
@@ -90,11 +83,13 @@
 	 * @param {Object} registro Objeto resultSet
 	 */
 	function prepararItem(registro) {
+
 		var pelicula = {
-			titulo : "Titulo",
-			genero : "Genero",
-			año : "2000",
-			sinopsis : "Sinopsis"
+			id : registro.fieldByName("id"),
+			titulo : registro.fieldByName("titulo"),
+			genero : registro.fieldByName("genero"),
+			año : registro.fieldByName("año"),
+			sinopsis : registro.fieldByName("sinopsis")
 		};
 
 		//Preparar objeto pelicula obteniendo la información
@@ -137,10 +132,16 @@
 	 */
 	function editarItem(e) {
 		//Obtener item de lista
+		var pelicula = e.section.getItemAt(e.itemIndex).properties.pelicula;
 
 		//Guardar ID en idEnEdicion
+		idEnEdicion = pelicula.id;
 
 		//Rellenar el formulario
+		$.titulo.setValue(pelicula.titulo);
+		$.genero.setValue(pelicula.genero);
+		$.año.setValue(pelicula.año);
+		$.sinopsis.setValue(pelicula.sinopsis);
 
 		//Establecemos modo de edición y mostramos formulario
 		modoEditor = MODO_EDICION;
@@ -173,11 +174,26 @@
 	 */
 	function insertarPelicula() {
 
+		var query,
+		    titulo,
+		    genero,
+		    año,
+		    sinopsis;
+
 		//Solo insertamos si todos los campos tienen valores
 		if (esFormularioValido()) {
+
 			//Obtenemos datos del formulario
+			titulo = $.titulo.getValue();
+			genero = $.genero.getValue();
+			año = $.año.getValue();
+			sinopsis = $.sinopsis.getValue();
+
 			//Preparamos query
+			query = "INSERT INTO PELICULAS (TITULO, GENERO, AÑO, SINOPSIS) VALUES (?, ?, ?, ?);";
+
 			//Insertamos en la base de datos
+			db.execute(query, titulo, genero, año, sinopsis);
 		}
 	}
 
@@ -187,11 +203,26 @@
 	 */
 	function actualizarPelicula() {
 
+		var query,
+		    titulo,
+		    genero,
+		    año,
+		    sinopsis;
+
 		//Solo actualizamos si todos los campos tienen valores
 		if (esFormularioValido()) {
+
 			//Obtenemos datos del formulario
+			titulo = $.titulo.getValue();
+			genero = $.genero.getValue();
+			año = $.año.getValue();
+			sinopsis = $.sinopsis.getValue();
+
 			//Preparamos query
+			query = "UPDATE PELICULAS SET TITULO=?, GENERO=?, AÑO=?, SINOPSIS=? WHERE ID=?;";
+
 			//Actualizamos la base de datos
+			db.execute(query, titulo, genero, año, sinopsis, idEnEdicion);
 		}
 	}
 
@@ -200,11 +231,19 @@
 	 * @description Eliminamos registro de DB
 	 */
 	function borrarPelicula() {
+		var query;
+
 		if (modoEditor == MODO_EDICION) {
 			//Preparamos query con idEnEdicion
+			query = "DELETE FROM PELICULAS WHERE ID=?;";
+
 			//Eliminamos registro
+			db.execute(query, idEnEdicion);
+
 			//Actualizamos la lista
 			actualizarLista();
+
+			cerrarEditor();
 		}
 	}
 
@@ -239,4 +278,13 @@
 		});
 	}
 
-})($.args || {});
+	/**
+	 * limpiarControlador
+	 * @description Cerramos base de datos
+	 * @param {Object} e
+	 */
+	function limpiarControlador(e) {
+		db.close();
+	}
+
+})($.args || {}); 
